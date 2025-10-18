@@ -1,49 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>我的音乐空间</title>
+    <title>我的音乐收藏</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 50px;
+        /* 样式同上，可自行修改 */
+        .playlist {
+            list-style: none;
+            padding: 0;
         }
-        .player-container {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 30px;
-            max-width: 500px;
-            margin: 0 auto;
+        .playlist li {
+            padding: 10px;
+            margin: 5px 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            cursor: pointer;
         }
-        audio {
-            width: 100%;
-            margin: 20px 0;
-        }
-        a.download-btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-top: 15px;
+        .playlist li:hover {
+            background: rgba(255, 255, 255, 0.3);
         }
     </style>
 </head>
 <body>
     <div class="player-container">
-        <h1>🎵 我的音乐</h1>
-        <audio controls loop>
-            <!-- 将 your-music-file.mp3 替换为你实际的文件名 -->
-            <source src="兄弟情谊-水浒传.mp3" type="audio/mpeg">
-            您的浏览器不支持 HTML5 音频播放器。
-        </audio>
-        <br>
-        <!-- 下载链接 -->
-        <a class="download-btn" href="兄弟情谊-水浒传.mp3" download>下载这首音乐</a>
+        <h1>🎶 我的播放列表</h1>
+        <audio id="mainPlayer" controls></audio>
+        <ul class="playlist" id="playlist">
+            <!-- 替换为你的实际音乐文件和名称 -->
+            <li onclick="playSong('兄弟情谊-水浒传.mp3', '歌曲一')">歌曲一</li>
+            <li onclick="playSong('邓寓君(等什么君) - 春庭雪.mp3')">歌曲二</li>
+        </ul>
     </div>
+
+    <script>
+        function playSong(songUrl, songTitle) {
+            const player = document.getElementById('mainPlayer');
+            player.src = songUrl;
+            player.play();
+            document.title = songTitle + ' - 我的音乐空间'; // 动态改变网页标题
+        }
+    </script>
 </body>
 </html>
